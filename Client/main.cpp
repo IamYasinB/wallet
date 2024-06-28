@@ -8,9 +8,9 @@
 int main(int argc, char *argv[])
 {
     QTcpSocket socket;
-    socket.connectToHost("127.0.0.1",6000);
+    socket.connectToHost("127.0.0.1",1234);
     while(!socket.waitForConnected(3000)){
-        socket.connectToHost("127.0.0.1",6000);
+        socket.connectToHost("127.0.0.1",1234);
     }
     qDebug() << "Connected to the server";
     QApplication a(argc, argv);

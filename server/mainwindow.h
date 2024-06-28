@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QtNetwork/QTcpServer>
 #include <QtNetwork/QTcpSocket>
+#include <QTcpServer>
 #include <QDebug>
 #include <QByteArray>
 #include <QString>
@@ -12,14 +13,14 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 private:
-    void newConnection();
-    void Read_Data_From_Socket();
-private:
     void Add_new_Client_connection(QTcpSocket* socket);
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QTcpServer* Server;
     QList<QTcpSocket*> Client_connection_list;
+private slots:
+    void newconnection();
+    void Read_Data_From_Socket();
 };
 #endif // MAINWINDOW_H
