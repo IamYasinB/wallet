@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+#include "database.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     else{
         qDebug() << "Server Failed";
     }
+
 }
 
 MainWindow::~MainWindow() {}
