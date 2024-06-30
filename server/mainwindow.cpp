@@ -34,9 +34,11 @@ void MainWindow :: Add_new_Client_connection(QTcpSocket* socket){
     qDebug() << CLient;
 }
 void MainWindow :: Read_Data_From_Socket(){
-    qDebug() << "Hi";
     QTcpSocket *socket = reinterpret_cast<QTcpSocket*>(sender());
-    QByteArray Message_from_server = socket->readAll();
-    qDebug() << Message_from_server;
-
+    QByteArray Message_from_client = socket->readAll();
+    qDebug() << Message_from_client;
+    //this is for a test
+    socket->write("Hi client");
+    socket->flush();
+    socket->waitForBytesWritten(3000);
 }
