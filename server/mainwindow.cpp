@@ -1,12 +1,15 @@
 #include "mainwindow.h"
 #include "database.h"
+#include <QtCore>
+#include <QtNetwork>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     Server = new QTcpServer();
-    if(Server->listen(QHostAddress :: Any,1234)){
+    if(Server->listen(QHostAddress :: Any,6000)){
         qDebug() << "Sever Started Seccessfully";
         bool connectionSuccessful = connect(Server,SIGNAL(newConnection()),this,SLOT(newconnection()));
+
         if (connectionSuccessful) {
             qDebug() << "Connected newConnection signal to slot successfully.";
         } else {
@@ -16,7 +19,6 @@ MainWindow::MainWindow(QWidget *parent)
     else{
         qDebug() << "Server Failed";
     }
-
 }
 
 MainWindow::~MainWindow() {}
@@ -27,13 +29,14 @@ void MainWindow :: newconnection(){
 }
 void MainWindow :: Add_new_Client_connection(QTcpSocket* socket){
     Client_connection_list.append(socket);
-    connect(socket,SIGNAL(readyRead()),this,SLOT(Read_Data_From_Socket()));
+    connect(socket,&QTcpSocket::readyRead,this,&MainWindow::Read_Data_From_Socket);
     QString CLient = "Client : " + QString::number(socket->socketDescriptor()) + " Connected with The Server";
     qDebug() << CLient;
 }
 void MainWindow :: Read_Data_From_Socket(){
-    QTcpSocket *socket = (QTcpSocket*)sender();
-    QByteArray Message_from_sever = socket->readAll();
-    QString Message = QString::fromStdString(Message_from_sever.toStdString());
+    qDebug() << "Hi";
+    QTcpSocket *socket = reinterpret_cast<QTcpSocket*>(sender());
+    QByteArray Message_from_server = socket->readAll();
+    qDebug() << Message_from_server;
 
 }

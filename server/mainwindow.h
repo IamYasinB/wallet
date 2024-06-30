@@ -9,6 +9,7 @@
 #include <QByteArray>
 #include <QString>
 #include <QList>
+#include <QCoreApplication>
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -21,6 +22,7 @@ public:
     QList<QTcpSocket*> Client_connection_list;
 private slots:
     void newconnection();
+    void disconnected();
     void Read_Data_From_Socket();
 };
 #endif // MAINWINDOW_H
