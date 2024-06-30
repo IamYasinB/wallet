@@ -37,8 +37,11 @@ void MainWindow :: Read_Data_From_Socket(){
     QTcpSocket *socket = reinterpret_cast<QTcpSocket*>(sender());
     QByteArray Message_from_client = socket->readAll();
     qDebug() << Message_from_client;
-    //this is for a test
-    socket->write("Hi client");
+
+}
+void MainWindow ::  send_for_client(QString Message){
+    QTcpSocket *socket = reinterpret_cast<QTcpSocket*>(sender());
+    socket->write(Message.toUtf8());
     socket->flush();
     socket->waitForBytesWritten(3000);
 }

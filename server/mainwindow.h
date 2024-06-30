@@ -24,5 +24,6 @@ private slots:
     void newconnection();
     void disconnected();
     void Read_Data_From_Socket();
+    void send_for_client(QString Message);
 };
 #endif // MAINWINDOW_H
