@@ -18,7 +18,8 @@ SOURCES += \
 HEADERS += \
     coin.h \
     database.h \
-    mainwindow.h
+    mainwindow.h \
+    worker.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -2,13 +2,27 @@
 #include "database.h"
 #include <QtCore>
 #include <QtNetwork>
-#include "coin.h"
+#include <QThread>
+#include <thread>
+#include "worker.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     Server = new QTcpServer();
     if(Server->listen(QHostAddress :: Any,6000)){
         qDebug() << "Sever Started Seccessfully";
+
+
+            Coin* BITCOIN = new Coin("bitcoin", "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
+            Coin* ETHEREUM = new Coin("ethereum", "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd");
+            Coin* TETHER = new Coin("tether", "https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd");
+            Coin* BNB = new Coin("binancecoin", "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd");
+            Coin* SOLANA = new Coin("solana", "https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
+            Coin* XRP = new Coin("ripple", "https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd");
+            Coin* TRON = new Coin("tron", "https://api.coingecko.com/api/v3/simple/price?ids=tron&vs_currencies=usd");
+
+
         bool connectionSuccessful = connect(Server,SIGNAL(newConnection()),this,SLOT(newconnection()));
 
         if (connectionSuccessful) {
@@ -20,8 +34,19 @@ MainWindow::MainWindow(QWidget *parent)
     else{
         qDebug() << "Server Failed";
     }
-
 }
+
+void MainWindow :: update(){
+
+    BITCOIN->Update();
+    ETHEREUM->Update();
+    TETHER->Update();
+    BNB->Update();
+    SOLANA->Update();
+    XRP->Update();
+    TRON->Update();
+
+    }
 
 MainWindow::~MainWindow() {}
 void MainWindow :: newconnection(){

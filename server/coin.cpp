@@ -23,6 +23,7 @@ void Coin :: OnResult(QNetworkReply* reply){
         QJsonObject PriceObj = JsonObj.value(NAME).toObject();
         this->PRICE = PriceObj.value("usd").toDouble();
         qDebug() << "Price is updated know";
+        qDebug() << NAME << ": ";
         qDebug() << QString :: number(PRICE);
      }
     else{
