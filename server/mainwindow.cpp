@@ -2,6 +2,7 @@
 #include "database.h"
 #include <QtCore>
 #include <QtNetwork>
+#include "coin.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -19,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     else{
         qDebug() << "Server Failed";
     }
+
 }
 
 MainWindow::~MainWindow() {}
