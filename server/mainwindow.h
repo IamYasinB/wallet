@@ -11,7 +11,7 @@
 #include <QList>
 #include <QCoreApplication>
 #include "coin.h"
-#include <QThread>
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -26,11 +26,6 @@ private:
     Coin* XRP;
     Coin* TRON;
 
-    QThread workerThread;
-
-signals:
-
-    void start_updating();
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -38,7 +33,6 @@ public:
     QTcpServer* Server;
     QList<QTcpSocket*> Client_connection_list;
 private slots:
-    void update();
     void newconnection();
     void Read_Data_From_Socket();
     void send_for_client(QString Message);
