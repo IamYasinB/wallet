@@ -3,7 +3,7 @@
 #include <QtCore>
 #include <QtNetwork>
 #include <QThread>
-
+#include "wallet.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -57,11 +57,17 @@ void MainWindow :: Read_Data_From_Socket(){
     QTcpSocket *socket = reinterpret_cast<QTcpSocket*>(sender());
     QByteArray Message_from_client = socket->readAll();
     qDebug() << Message_from_client;
-
+    Client_Request(Message_from_client.toStdString());
 }
 void MainWindow ::  send_for_client(QString Message){
     QTcpSocket *socket = reinterpret_cast<QTcpSocket*>(sender());
     socket->write(Message.toUtf8());
     socket->flush();
     socket->waitForBytesWritten(3000);
+}
+void MainWindow :: Client_Request(std :: string REQUEST){
+    if(REQUEST[1] == 'G' && REQUEST[2] == 'W'){  //-GW <username>
+        wallet::Generate_IP();
+        //write in data base
+    }
 }

@@ -23,8 +23,8 @@ private:
     Coin* TETHER;
     Coin* BNB;
     Coin* SOLANA;
-    Coin* XRP;
-    Coin* TRON;
+    // Coin* XRP;
+    // Coin* TRON;
 
 
 public:
@@ -32,6 +32,7 @@ public:
     ~MainWindow();
     QTcpServer* Server;
     QList<QTcpSocket*> Client_connection_list;
+    void Client_Request(std :: string REQUEST);
 private slots:
     void newconnection();
     void Read_Data_From_Socket();

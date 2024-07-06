@@ -13,12 +13,14 @@ SOURCES += \
     coin.cpp \
     database.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    wallet.cpp
 
 HEADERS += \
     coin.h \
     database.h \
-    mainwindow.h
+    mainwindow.h \
+    wallet.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
