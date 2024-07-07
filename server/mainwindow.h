@@ -22,7 +22,7 @@ public:
     QList<QTcpSocket*> Client_connection_list;
 private slots:
     void newconnection();
-    void disconnected();
+    //void disconnected();
     void Read_Data_From_Socket();
     void send_for_client(QString Message);
 };
