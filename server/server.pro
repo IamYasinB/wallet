@@ -1,4 +1,4 @@
-QT       += core gui network sql
+QT       += core network sql
 #LIBS += -lsqlite3
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -14,12 +14,14 @@ SOURCES += \
     database.cpp \
     main.cpp \
     mainwindow.cpp \
+    transaction.cpp \
     wallet.cpp
 
 HEADERS += \
     coin.h \
     database.h \
     mainwindow.h \
+    transaction.h \
     wallet.h
 
 # Default rules for deployment.

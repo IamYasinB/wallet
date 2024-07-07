@@ -32,7 +32,7 @@ public:
     ~MainWindow();
     QTcpServer* Server;
     QList<QTcpSocket*> Client_connection_list;
-    void Client_Request(std :: string REQUEST);
+    void Client_Request(QString REQUEST);
 private slots:
     void newconnection();
     void Read_Data_From_Socket();

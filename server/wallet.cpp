@@ -20,6 +20,7 @@ std :: string wallet :: Generate_IP(){
         half_IP = std::to_string(rand()%9000 + 1000);
 
         /*check in data bese if this ip does exist*/
+        //TODO
         Confirmed_IP = true;
     }
     return "215"+half_IP;

@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <iostream>
-class wallet
+class wallet : public QObject
 {
     Q_OBJECT
 private:
