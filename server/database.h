@@ -8,7 +8,8 @@
 #include <vector>
 #include <string>
 #include <exception>
-//it must be in singelton Patern   TODO : make it singelton
+#include <mutex>
+
 using namespace std;
 
 class DataBase
@@ -17,12 +18,27 @@ private:
     QSqlDatabase db;
     bool open();
 
+    //singelton
+    static DataBase* instance;
+    mutex dbMutex;
+    DataBase();
+    DataBase(const DataBase&) = delete; // copy constructor
+    DataBase& operator=(const DataBase&) = delete;
+
 public:
     vector<string> select(const QString& queryStr);
     bool insert(const QString& queryText);
     bool deleteByID(int recordId,const QString& table_name);
     bool deleteByQuery(const QString& _query);
     bool update(const QString& _query);
+
+    static DataBase* getInstance()
+    {
+        if (instance == nullptr) {
+            instance = new DataBase();
+        }
+        return instance;
+    }
 
 };
 

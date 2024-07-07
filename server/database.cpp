@@ -17,6 +17,7 @@ bool DataBase::open()
 }
 vector<string> DataBase::select(const QString& queryStr)
 {
+    dbMutex.lock();
     open();
     vector<string> result;
 
@@ -43,10 +44,12 @@ vector<string> DataBase::select(const QString& queryStr)
 
     }
     db.close();
+    dbMutex.unlock();
     return result;
 }
 bool DataBase::insert(const QString& queryText) {
 
+    dbMutex.lock();
     open();
 
     QSqlQuery query(db);
@@ -62,10 +65,12 @@ bool DataBase::insert(const QString& queryText) {
     db.close();
 
     qDebug() << "Query inserted successfully!";
+    dbMutex.unlock();
     return true;
 }
 bool DataBase::deleteByID(int recordId,const QString& table_name)
 {
+    dbMutex.lock();
     open();
 
     QSqlQuery query;
@@ -83,10 +88,12 @@ bool DataBase::deleteByID(int recordId,const QString& table_name)
     db.close();
 
     qDebug() << "Record deleted successfully!";
+    dbMutex.unlock();
     return true;
 }
 bool DataBase::deleteByQuery(const QString& _query)
 {
+    dbMutex.lock();
     open();
 
     QSqlQuery query(db);
@@ -101,10 +108,13 @@ bool DataBase::deleteByQuery(const QString& _query)
     db.close();
 
     qDebug() << "Query deleted successfully!";
+    dbMutex.unlock();
     return true;
 }
 bool DataBase::update(const QString& _query)
 {
+    dbMutex.lock();
+    open();
     QSqlQuery query(db);
     if (!query.exec(_query)) {
         qDebug() << "Error executing query:" << query.lastError().text();
@@ -116,5 +126,7 @@ bool DataBase::update(const QString& _query)
     db.close();
 
     qDebug() << "Query executed successfully!";
+    dbMutex.unlock();
     return true;
 }
+
