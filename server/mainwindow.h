@@ -35,6 +35,7 @@ public:
     void Client_Request(QString REQUEST);
 private slots:
     void newconnection();
+
     void Read_Data_From_Socket();
     void send_for_client(QString Message);
 };
