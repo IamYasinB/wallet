@@ -11,6 +11,8 @@
 #include <QList>
 #include <QCoreApplication>
 #include "coin.h"
+#include "Request_seperator.cpp"
+#include "transaction.h"
 
 class MainWindow : public QMainWindow
 {
@@ -25,7 +27,7 @@ private:
     Coin* SOLANA;
     // Coin* XRP;
     // Coin* TRON;
-
+    transaction all_trc;
 
 public:
     MainWindow(QWidget *parent = nullptr);

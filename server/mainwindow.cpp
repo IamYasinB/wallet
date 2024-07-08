@@ -3,6 +3,7 @@
 #include <QtCore>
 #include <QtNetwork>
 #include <QThread>
+#include <vector>
 #include "wallet.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -92,5 +93,27 @@ void MainWindow :: Client_Request(QString REQUEST){
         //TODO
         //is_registered function should be called here
         //if user was register send 'T' and if it was not return 'F'
+    }
+    //transaction
+    else if(REQUEST[1]=='X'){ //-X <username> <b/s/e> <balance> <1/2/3/4/5> <amount wanted>
+        std :: vector<std :: string> command;/* = command_seperator(REQUEST.toStdString());*/
+        double price;
+        if(command[4]=="1"){
+            price = BITCOIN->getprice();
+        }
+        if(command[4]=="2"){
+            price = ETHEREUM->getprice();
+        }
+        if(command[4]=="3"){
+            price = TETHER->getprice();
+        }
+        if(command[4]=="4"){
+            price = BNB->getprice();
+        }
+        if(command[4]=="5"){
+            price = SOLANA->getprice();
+        }
+        all_trc.Analayzer(command[1],command[2],command[3],command[4],price,atof(command[5].c_str()));
+        
     }
  }
