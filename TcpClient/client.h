@@ -29,5 +29,6 @@ private:
 private slots:
     std :: string Read();
 
+    void on_pushButton_exit_clicked();
 };
 #endif // CLIENT_H

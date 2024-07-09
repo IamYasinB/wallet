@@ -6,6 +6,12 @@ Client::Client(QWidget *parent)
     , ui(new Ui::Client)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint);
+    setAttribute(Qt::WA_TranslucentBackground);
+    setWindowModality(Qt::ApplicationModal);
+    ui->lineEdit_username->setPlaceholderText("Username");
+    ui->lineEdit_password->setPlaceholderText("Password");
+
 }
 
 Client::~Client()
@@ -34,3 +40,9 @@ std :: string Client :: Read(){
     qDebug() << Message_from_server;
     return (std::string)Message_from_server.toStdString();
 }
+
+void Client::on_pushButton_exit_clicked()
+{
+    close();
+}
+

@@ -22,3 +22,9 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    pictures.qrc
+
+DISTFILES += \
+    C:/pictures/stock-market-modern-flat-concept-for-web-banner-design-male-trader-buys-and-sells-on-stock-exchange-analyzes-charts-and-statistics-invests-money-vector.jpg
