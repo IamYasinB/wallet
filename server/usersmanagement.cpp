@@ -32,7 +32,7 @@ int UsersManagement::signup(const string& _email,const string& _password,const s
         return 6;
     }
     // iserting into database
-    string query = "INSERT INTO Accounts (email,password,username,level) VALUES ('" + _email + "','" + _password + "','" + _username + "','" + to_string(1) + "');";
+    string query = "INSERT INTO Accounts (email,password,username,level,name,phone,address) VALUES ('" + _email + "','" + _password + "','" + _username + "','" + to_string(1) + "','null','null','null');";
     QString qqery = query.c_str();
     DataBase * db = DataBase::getInstance();
     if(db->insert(qqery))
@@ -85,4 +85,109 @@ int UsersManagement::signup(const string& _email,const string& _password,const s
         return 7;
     }
 
+}
+bool UsersManagement::signin(string emailOrUsername,string password)
+{
+    for (int i = 0; i < PersonsRefInstant.size(); ++i)
+    {
+        if(PersonsRefInstant[i].email == emailOrUsername && PersonsRefInstant[i].password == password)
+            return true;
+        if(PersonsRefInstant[i].userName == emailOrUsername && PersonsRefInstant[i].password == password)
+            return true;
+    }
+    return false;
+}
+
+bool UsersManagement::is_register_by_username(const string& username)
+{
+    for (int i = 0; i < PersonsRefInstant.size(); ++i) {
+        if(PersonsRefInstant[i].userName == username)
+        {
+            if(PersonsRefInstant[i].name == "null")
+            {
+                return false;
+            }else
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool UsersManagement::is_register_by_email(const string& email)
+{
+    for (int i = 0; i < PersonsRefInstant.size(); ++i) {
+        if(PersonsRefInstant[i].email == email)
+        {
+            if(PersonsRefInstant[i].name == "null")
+            {
+                return false;
+            }else
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+int UsersManagement::do_registeration_by_email(const string& email,const string& name,const string& phone,const string& address)
+{
+    if(name == "null" || phone == "null" || address == "null" || name.size() == 0 || phone.size() == 0 || address.size() == 0)
+        return 4;
+
+    int userID = -1;
+    for (int i = 0; i < PersonsRefInstant.size(); ++i) {
+        if(PersonsRefInstant[i].email == email)
+        {
+            userID = PersonsRefInstant[i].userId;
+        }
+    }
+    if(userID == -1)
+    {
+        return 2;
+    }else
+    {
+        string query = "UPDATE Accounts SET name='" + name + "' phone='" + phone + "' address='" + address + "' WHERE userID='" + to_string(userID) + "';";
+        QString qquery = query.c_str();
+        DataBase* db = DataBase::getInstance();
+        if(db->update(qquery))
+        {
+            return 1;
+        }else
+        {
+            return 3;
+        }
+    }
+}
+
+int UsersManagement::do_registeration_by_username(const string& username,const string& name,const string& phone,const string& address)
+{
+    if(name == "null" || phone == "null" || address == "null" || name.size() == 0 || phone.size() == 0 || address.size() == 0)
+        return 4;
+
+    int userID = -1;
+    for (int i = 0; i < PersonsRefInstant.size(); ++i) {
+        if(PersonsRefInstant[i].userName == username)
+        {
+            userID = PersonsRefInstant[i].userId;
+        }
+    }
+    if(userID == -1)
+    {
+        return 2;
+    }else
+    {
+        string query = "UPDATE Accounts SET name='" + name + "' phone='" + phone + "' address='" + address + "' WHERE userID='" + to_string(userID) + "';";
+        QString qquery = query.c_str();
+        DataBase* db = DataBase::getInstance();
+        if(db->update(qquery))
+        {
+            return 1;
+        }else
+        {
+            return 3;
+        }
+    }
 }

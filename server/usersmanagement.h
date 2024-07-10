@@ -36,9 +36,28 @@ public:
      * if password is not valid return 6
      * if failed insert into datatbase return 7
     */
+    static bool signin(string emailOrUsername,string password);
+    static bool is_register_by_username(const string& username);
+    static bool is_register_by_email(const string& email);
+
+    static int do_registeration_by_email(const string& email,const string& name,const string& phone,const string& address);
+    /*
+     * return 1 if successful
+     * return 2 if email dose not exist
+     * return 3 if can not execute update query
+     * return 4 if name or phone or address are not valid
+     */
+
+    static int do_registeration_by_username(const string& username,const string& name,const string& phone,const string& address);
+    /*
+     * return 1 if successful
+     * return 2 if username dose not exist
+     * return 3 if can not execute update query
+     * return 4 if name or phone or address are not valid
+     */
 
 
-    // static bool login(string emailOrUsername,string password);
+    // TODO : complet these two functions below
     // static int change_password(string emailOrUsername,string password);
     // static int reset_password(string userame,string email,string newPasswprd);
 };
