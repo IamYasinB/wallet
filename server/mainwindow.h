@@ -36,9 +36,8 @@ public:
     QList<QTcpSocket*> Client_connection_list;
     void Client_Request(QString REQUEST);
 private slots:
-    void newconnection();
-
-    void Read_Data_From_Socket();
     void send_for_client(QString Message);
+    void newconnection();
+    void Read_Data_From_Socket();
 };
 #endif // MAINWINDOW_H

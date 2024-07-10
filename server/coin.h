@@ -9,7 +9,7 @@ class Coin : public QObject
         Q_OBJECT
 
 private:
-    double PRICE;
+    double PRICE = 0;
     QString NAME;
     QString URL;
     QNetworkAccessManager* Network_Maneger;

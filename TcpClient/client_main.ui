@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>client_main</class>
+ <widget class="QDialog" name="client_main">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>864</width>
+    <height>669</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>-10</y>
+     <width>861</width>
+     <height>691</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+border-radius:10px</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>10</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Register</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>10</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Log out</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>80</y>
+     <width>441</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QLabel" name="label_4">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  Name</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_5">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  Last Price(USD)</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>290</y>
+     <width>441</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="QLabel" name="label_6">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  Etherium</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_Etherium">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  ----</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>400</y>
+     <width>441</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <item>
+     <widget class="QLabel" name="label_8">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  Tether</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_Tether">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  ----</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>500</y>
+     <width>441</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_5">
+    <item>
+     <widget class="QLabel" name="label_10">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  Bnb</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_bnb">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  ----</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_5">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>600</y>
+     <width>441</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_6">
+    <item>
+     <widget class="QLabel" name="label_12">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  Solana</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_solana">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  ----</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_5">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>600</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_6">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>500</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_7">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>400</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_8">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>290</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_9">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>170</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>170</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Buy</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>170</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Sell</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_5">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>290</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Buy</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_6">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>290</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Sell</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_7">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>400</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Buy</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_8">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>400</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Sell</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_9">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>500</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Buy</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_10">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>500</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Sell</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_11">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>600</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Buy</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_12">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>600</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Sell</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>130</y>
+     <width>871</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>240</y>
+     <width>871</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>350</y>
+     <width>871</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>460</y>
+     <width>871</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_5">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>560</y>
+     <width>871</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_6">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>50</y>
+     <width>871</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>80</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>               Operation</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line_7">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>140</y>
+     <width>16</width>
+     <height>531</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>170</y>
+     <width>441</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  Bitcoin</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_bitcoin">
+      <property name="styleSheet">
+       <string notr="true">font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>  ----</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

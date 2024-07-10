@@ -5,6 +5,9 @@
 #include <QThread>
 #include <vector>
 #include "wallet.h"
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QTimer>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -34,9 +37,11 @@ MainWindow::MainWindow(QWidget *parent)
     else{
         qDebug() << "Server Failed";
     }
-
-
+/*     QTimer* timer = new QTimer(this);
+     connect(timer, &QTimer::timeout, this,&MainWindow::sendprice);
+     timer->start(20000)*/
 }
+
 
 MainWindow::~MainWindow() {}
 void MainWindow :: newconnection(){
@@ -45,7 +50,6 @@ void MainWindow :: newconnection(){
     }
 }
 void MainWindow :: Add_new_Client_connection(QTcpSocket* socket){
-    Client_connection_list.append(socket);
     connect(socket,&QTcpSocket::readyRead,this,&MainWindow::Read_Data_From_Socket);
     QString CLient = "Client : " + QString::number(socket->socketDescriptor()) + " Connected with The Server";
     qDebug() << CLient;
@@ -54,14 +58,36 @@ void MainWindow :: Read_Data_From_Socket(){
     QTcpSocket *socket = reinterpret_cast<QTcpSocket*>(sender());
     QByteArray Message_from_client = socket->readAll();
     qDebug() << Message_from_client;
-    Client_Request(Message_from_client);
+    //Client_Request(Message_from_client);
+    if(Message_from_client == "p"){
+        qDebug() << "sending price";
+        if(BITCOIN->getprice()!=0){
+        send_for_client("B"+QString :: number(BITCOIN->getprice()));
+        _sleep(2000);}
+        if(ETHEREUM->getprice()!=0){
+        send_for_client("E"+QString :: number(ETHEREUM->getprice()));
+            _sleep(2000);}
+        if(TETHER->getprice()!=0){
+        send_for_client("T"+QString :: number(TETHER->getprice()));
+            _sleep(2000);}
+        if(BNB->getprice()!=0){
+        send_for_client("N"+QString :: number(BNB->getprice()));
+            _sleep(2000);}
+        if(SOLANA->getprice()!=0){
+        send_for_client("S"+QString :: number(SOLANA->getprice()));
+        }qDebug() << "Price has been sent";
+    }
 }
 void MainWindow ::  send_for_client(QString Message){
-    QTcpSocket *socket = reinterpret_cast<QTcpSocket*>(sender());
+    QTcpSocket *socket = qobject_cast<QTcpSocket*>(sender());
+    if(socket && socket->state() == QAbstractSocket::ConnectedState){
     socket->write(Message.toUtf8());
     socket->flush();
-    socket->waitForBytesWritten(3000);
-}
+    }
+    else{
+        qDebug() << "error";
+    }
+    }
 void MainWindow :: Client_Request(QString REQUEST){
     if(REQUEST[1] == 'G' && REQUEST[2] == 'W'){  //-GW <username>
         QString IP = QString :: fromStdString(wallet::Generate_IP());

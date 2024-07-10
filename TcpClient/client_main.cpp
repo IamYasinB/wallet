@@ -1,0 +1,81 @@
+#include "client_main.h"
+#include "ui_client_main.h"
+#include "client.h"
+#include <QDebug>
+client_main::client_main(QTcpSocket* socket,QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::client_main)
+{
+    this->socket = socket;
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint);
+    setAttribute(Qt::WA_TranslucentBackground);
+    setWindowModality(Qt::ApplicationModal);
+//    connect(socket,&QTcpSocket::readyRead,this,&client_main::read);
+
+
+    QTimer* timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &client_main::request_price);
+    timer->start(60000);
+
+    request_price();
+}
+void client_main :: request_price(){
+    Write("p");
+    qDebug() << "Price requested";
+}
+
+client_main::~client_main()
+{
+    delete ui;
+}
+
+QString client_main :: read(QByteArray Message_from_serverr){
+    if(Message_from_serverr.size()<=0){
+        return "Empty";
+    }
+    QString Message_from_server = QString(Message_from_serverr);
+    qDebug() << Message_from_server;
+    if(Message_from_server[0]=='B'){
+       Message_from_server =  Message_from_server.remove(0,1);
+        ui->label_bitcoin->setText("  "+Message_from_server);
+    }
+    else if(Message_from_server.at(0) == 'E'){
+        Message_from_server =  Message_from_server.remove(0,1);
+        ui->label_Etherium->setText("  "+Message_from_server);
+    }
+    else if(Message_from_server[0] == 'T'){
+        Message_from_server =  Message_from_server.remove(0,1);
+        ui->label_Tether->setText("  "+Message_from_server);
+    }
+    else if(Message_from_server[0] == 'N'){
+        Message_from_server =  Message_from_server.remove(0,1);
+        ui->label_bnb->setText("  "+Message_from_server);
+    }
+    else if(Message_from_server[0] == 'S'){
+        Message_from_server =  Message_from_server.remove(0,1);
+        ui->label_solana->setText("  "+Message_from_server);
+         }
+
+    return Message_from_server;
+}
+void client_main::on_pushButton_2_clicked()
+{
+    NewPage = new Client;
+    NewPage->show();
+    close();
+}
+
+int client_main ::  Write(QString Text){
+    if(socket->write(Text.toUtf8())==-1){
+        return -1;
+    }
+    socket->flush();
+    socket->waitForBytesWritten(3000);
+    return 1;
+}
+
+void client_main::on_pushButton_clicked()
+{
+}
+
