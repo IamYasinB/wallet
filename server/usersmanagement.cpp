@@ -142,6 +142,9 @@ int UsersManagement::do_registeration_by_email(const string& email,const string&
         if(PersonsRefInstant[i].email == email)
         {
             userID = PersonsRefInstant[i].userId;
+            PersonsRefInstant[i].name = name;
+            PersonsRefInstant[i].phone = phone;
+            PersonsRefInstant[i].address = address;
         }
     }
     if(userID == -1)
@@ -172,6 +175,9 @@ int UsersManagement::do_registeration_by_username(const string& username,const s
         if(PersonsRefInstant[i].userName == username)
         {
             userID = PersonsRefInstant[i].userId;
+            PersonsRefInstant[i].name = name;
+            PersonsRefInstant[i].phone = phone;
+            PersonsRefInstant[i].address = address;
         }
     }
     if(userID == -1)
