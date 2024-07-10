@@ -11,7 +11,7 @@
 #include <QList>
 #include <QCoreApplication>
 #include "coin.h"
-#include "Request_seperator.cpp"
+#include "command_seprator.h"
 #include "transaction.h"
 
 class MainWindow : public QMainWindow
