@@ -26,7 +26,7 @@ public:
         return PersonsRefInstant;
     }
 
-    static int signin(const string& _email,const string& _password,const string& _username,int inviterID);
+    static int signup(const string& _email,const string& _password,const string& _username,int inviterID);
     /*
      * if successful return 1
      * if email exist return 2
