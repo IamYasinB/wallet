@@ -17,6 +17,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     transaction.cpp \
+    usersmanagement.cpp \
+    validators.cpp \
     wallet.cpp
 
 HEADERS += \
@@ -24,6 +26,8 @@ HEADERS += \
     database.h \
     mainwindow.h \
     transaction.h \
+    usersmanagement.h \
+    validators.h \
     wallet.h
 
 # Default rules for deployment.

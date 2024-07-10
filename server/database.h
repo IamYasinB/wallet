@@ -7,6 +7,7 @@
 #include <QSqlError>
 #include <vector>
 #include <string>
+
 #include <exception>
 #include <mutex>
 
