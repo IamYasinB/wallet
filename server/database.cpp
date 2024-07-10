@@ -3,6 +3,26 @@
 // Initialize the static instance pointer
 DataBase* DataBase::instance = nullptr;
 
+void DataBase::databaseInitializer()
+{
+    string query1 = "CREATE TABLE IF NOT EXISTS Accounts (userID INTEGER PRIMARY KEY,email VARCHAR(255),password VARCHAR(255),username VARCHAR(255),level VARCHAR(255),name VARCHAR(255),phone VARCHAR(255),address VARCHAR(255));";
+    string query2 = "CREATE TABLE IF NOT EXISTS invitation (inviter INTEGER,invited INTEGER);";
+    string query3 = "CREATE TABLE IF NOT EXISTS wallet_balance (owner INTEGER,walletIP VARCHAR(255),USD INTEGER,BTC INTEGER,ETH INTEGER,USDT INTEGER,BNB INTEGER,SOL INTEGER);";
+
+    QString q1 = query1.c_str();
+    QString q2 = query2.c_str();
+    QString q3 = query3.c_str();
+
+    bool b1 = instance->insert(q1);
+    bool b2 = instance->insert(q2);
+    bool b3 = instance->insert(q3);
+
+    if(!(b1 && b2 && b3))
+    {
+        throw runtime_error("could not creat tabeles in database");
+    }
+
+}
 DataBase::DataBase()
 {
 }

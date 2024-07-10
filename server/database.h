@@ -18,7 +18,7 @@ class DataBase
 private:
     QSqlDatabase db;
     bool open();
-
+    void databaseInitializer();
     //singelton
     static DataBase* instance;
     mutex dbMutex;
@@ -37,6 +37,7 @@ public:
     {
         if (instance == nullptr) {
             instance = new DataBase();
+            instance->databaseInitializer();
         }
         return instance;
     }
