@@ -1,5 +1,11 @@
 #include "database.h"
 
+// Initialize the static instance pointer
+DataBase* DataBase::instance = nullptr;
+
+DataBase::DataBase()
+{
+}
 bool DataBase::open()
 {
     db = QSqlDatabase::addDatabase("QSQLITE","mydb");

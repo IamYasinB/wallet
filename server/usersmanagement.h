@@ -15,13 +15,13 @@ class UsersManagement
 {
 private:
 
-    static vector<PersonNode>& PersonsRefInstant;
+    static vector<PersonNode> PersonsRefInstant;
     static mutex usrmutex;
     UsersManagement();
 public:
     // TODO : creat a loader to load all users from database
 
-    static vector<PersonNode>& getAllPersons()
+    static vector<PersonNode> getAllPersons()
     {
         return PersonsRefInstant;
     }
@@ -34,12 +34,13 @@ public:
      * if email is not valid return 4
      * if user name is not valid return 5
      * if password is not valid return 6
+     * if failed insert into datatbase return 7
     */
 
 
-    static bool login(string emailOrUsername,string password);
-    static int change_password(string emailOrUsername,string password);
-    static int reset_password(string userame,string email,string newPasswprd);
+    // static bool login(string emailOrUsername,string password);
+    // static int change_password(string emailOrUsername,string password);
+    // static int reset_password(string userame,string email,string newPasswprd);
 };
 
 
