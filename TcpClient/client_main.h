@@ -24,6 +24,7 @@ public:
     ~client_main();
     int Write(QString Text);
     void request_price();
+    void request_balance();
 private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
@@ -32,7 +33,7 @@ public slots:
 private:
     QTimer* timer;
     QString username;
-    QString password;
+    QString balance;
     Ui::client_main *ui;
     QTcpSocket* socket;
     Client* NewPage;

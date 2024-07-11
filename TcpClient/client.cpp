@@ -6,6 +6,7 @@ Client::Client(QTcpSocket* socket,QWidget *parent)
     , ui(new Ui::Client)
     , socket(socket ? socket : new QTcpSocket(this))
 {
+    conncet_to_server();
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
