@@ -3,16 +3,17 @@
 transaction :: transaction(){
     connect(this,SIGNAL(vector_not_empty()),this,SLOT(Add_In_Queue()));
 }
-int transaction :: buy(){
-    //TODO
+int transaction :: buy()
+{
 }
-int transaction ::sell(){
-    //TODO
+int transaction ::sell()
+{
 }
-int transaction :: exchange(){
-    //TODO
+int transaction :: exchange()
+{
 }
-int transaction :: Add_In_Queue(){
+int transaction :: Add_In_Queue()
+{
     while(Queue.size() != 0){
         if(Queue[0][1] == "b"){
             //buy methode be called
