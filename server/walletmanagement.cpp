@@ -109,3 +109,17 @@ double WalletManagement::get_wallet_USD(int walletIP)
         }
     }
 }
+
+int WalletManagement::usernameTOuserid(string username)
+{
+    int userID = -1;
+    for (int i = 0; i < UsersManagement::PersonsRefInstant.size(); ++i)
+    {
+        if(username == UsersManagement::PersonsRefInstant[i].userName)
+        {
+            userID = UsersManagement::PersonsRefInstant[i].userId;
+            break;
+        }
+    }
+    return userID;
+}

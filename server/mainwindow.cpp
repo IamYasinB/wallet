@@ -21,8 +21,7 @@ std::vector<QString> splitIntoWords(const QString &input) {
 
     return result;
 }
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent): QMainWindow(parent)
 {
     Server = new QTcpServer();
     if(Server->listen(QHostAddress :: Any,6000)){
@@ -33,8 +32,8 @@ MainWindow::MainWindow(QWidget *parent)
         TETHER = new Coin("tether", "https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd");
         BNB = new Coin("binancecoin", "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd");
         SOLANA = new Coin("solana", "https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
-         // XRP = new Coin("ripple", "https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd");
-         // TRON = new Coin("tron", "https://api.coingecko.com/api/v3/simple/price?ids=tron&vs_currencies=usd");
+            // XRP = new Coin("ripple", "https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd");
+            // TRON = new Coin("tron", "https://api.coingecko.com/api/v3/simple/price?ids=tron&vs_currencies=usd");
 
 
 
@@ -50,7 +49,7 @@ MainWindow::MainWindow(QWidget *parent)
     else{
         qDebug() << "Server Failed";
     }
-/*     QTimer* timer = new QTimer(this);
+    /*     QTimer* timer = new QTimer(this);
      connect(timer, &QTimer::timeout, this,&MainWindow::sendprice);
      timer->start(20000)*/
 }
@@ -59,7 +58,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow() {}
 void MainWindow :: newconnection(){
     while(Server->hasPendingConnections()){
-    Add_new_Client_connection(Server->nextPendingConnection());
+        Add_new_Client_connection(Server->nextPendingConnection());
     }
 }
 void MainWindow :: Add_new_Client_connection(QTcpSocket* socket){
@@ -75,19 +74,19 @@ void MainWindow :: Read_Data_From_Socket(){
     if(Message_from_client == "p"){
         qDebug() << "sending price";
         if(BITCOIN->getprice()!=0){
-        send_for_client("B"+QString :: number(BITCOIN->getprice()));
-        _sleep(2000);}
+            send_for_client("B"+QString :: number(BITCOIN->getprice()));
+            _sleep(2000);}
         if(ETHEREUM->getprice()!=0){
-        send_for_client("E"+QString :: number(ETHEREUM->getprice()));
+            send_for_client("E"+QString :: number(ETHEREUM->getprice()));
             _sleep(2000);}
         if(TETHER->getprice()!=0){
-        send_for_client("T"+QString :: number(TETHER->getprice()));
+            send_for_client("T"+QString :: number(TETHER->getprice()));
             _sleep(2000);}
         if(BNB->getprice()!=0){
-        send_for_client("N"+QString :: number(BNB->getprice()));
+            send_for_client("N"+QString :: number(BNB->getprice()));
             _sleep(2000);}
         if(SOLANA->getprice()!=0){
-        send_for_client("S"+QString :: number(SOLANA->getprice()));
+            send_for_client("S"+QString :: number(SOLANA->getprice()));
         }qDebug() << "Price has been sent";
     }
     else{
@@ -97,13 +96,13 @@ void MainWindow :: Read_Data_From_Socket(){
 void MainWindow ::  send_for_client(QString Message){
     QTcpSocket *socket = qobject_cast<QTcpSocket*>(sender());
     if(socket && socket->state() == QAbstractSocket::ConnectedState){
-    socket->write(Message.toUtf8());
-    socket->flush();
+        socket->write(Message.toUtf8());
+        socket->flush();
     }
     else{
         qDebug() << "error";
     }
-    }
+}
 QString MainWindow :: Client_Request(QString REQUEST){
 
     if(REQUEST[1] == 'A' && REQUEST[2] == 'W'){  //-AW <username>
