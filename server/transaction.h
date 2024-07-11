@@ -31,7 +31,14 @@ public:
      * if could not deposit coin return 4
      * if could not find wallet ip return 5
     */
-    int sell();
+    int sell(int walletIP,string coin,double amount);
+    /*
+     * if successful return 1
+     * if coin name is wrong return 2
+     * if could not deposit coin return 3
+     * if could not withdraw USD return 4
+     * if could not find wallet ip return 5
+    */
     int exchange();
     int Analayzer(std :: string username , std :: string operation, std :: string balance ,std :: string coin_requested,double current_price,double amount_requested);
 private slots:
