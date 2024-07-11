@@ -11,6 +11,7 @@ Client::Client(QWidget *parent)
     setWindowModality(Qt::ApplicationModal);
     ui->lineEdit_username->setPlaceholderText("Username");
     ui->lineEdit_password->setPlaceholderText("Password");
+    ui->lineEdit_password->setEchoMode(QLineEdit::Password);
     ui->lineEdit_Email->setPlaceholderText("Email");
 
 }
