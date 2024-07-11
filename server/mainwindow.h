@@ -21,19 +21,16 @@ class MainWindow : public QMainWindow
 private:
     void Add_new_Client_connection(QTcpSocket* socket);
 
-
-    // Coin* XRP;
-    // Coin* TRON;
-    transaction all_trc;
-
-public:
-
     Coin* BITCOIN;
     Coin* ETHEREUM;
     Coin* TETHER;
     Coin* BNB;
     Coin* SOLANA;
+    // Coin* XRP;
+    // Coin* TRON;
+    transaction all_trc;
 
+public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QTcpServer* Server;

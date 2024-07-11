@@ -1,21 +1,25 @@
 #include "transaction.h"
 #include "coin.h"
-#include "mainwindow.h"
 using namespace std;
-transaction :: transaction(){
+transaction :: transaction(double _BTC_price,double _ETH_price,double _USDT_price,double _BNB_price,double _SOL_price){
     connect(this,SIGNAL(vector_not_empty()),this,SLOT(Add_In_Queue()));
+    BTC_price = _BTC_price;
+    ETH_price = _ETH_price;
+    USDT_price = _USDT_price;
+    BNB_price = _BNB_price;
+    SOL_price = _SOL_price;
 }
+transaction::transaction(){}
 int transaction :: buy(int walletIP,string coin,double amount)
 {
     for (int i = 0; i < WalletManagement::WalletRefInstant.size(); ++i)
     {
         if(WalletManagement::WalletRefInstant[i].walletIP == walletIP)
         {
-            MainWindow priceBoard;
             if(coin == "BTC")
             {
                 // withdraw USD
-                double needed_USD = priceBoard.BITCOIN->getprice() * amount;
+                double needed_USD = BTC_price * amount;
                 if(WalletManagement::WalletRefInstant[i].withdraw("USD",needed_USD) == 1)
                 {
                     // deposit
@@ -34,7 +38,7 @@ int transaction :: buy(int walletIP,string coin,double amount)
             else if(coin == "ETH")
             {
                 // withdraw USD
-                double needed_USD = priceBoard.ETHEREUM->getprice() * amount;
+                double needed_USD = ETH_price * amount;
                 if(WalletManagement::WalletRefInstant[i].withdraw("USD",needed_USD) == 1)
                 {
                     // deposit
@@ -53,7 +57,7 @@ int transaction :: buy(int walletIP,string coin,double amount)
             else if(coin == "USDT")
             {
                 // withdraw USD
-                double needed_USD = priceBoard.TETHER->getprice() * amount;
+                double needed_USD = USDT_price * amount;
                 if(WalletManagement::WalletRefInstant[i].withdraw("USD",needed_USD) == 1)
                 {
                     // deposit
@@ -72,7 +76,7 @@ int transaction :: buy(int walletIP,string coin,double amount)
             else if(coin == "BNB")
             {
                 // withdraw USD
-                double needed_USD = priceBoard.BNB->getprice() * amount;
+                double needed_USD = BNB_price * amount;
                 if(WalletManagement::WalletRefInstant[i].withdraw("USD",needed_USD) == 1)
                 {
                     // deposit
@@ -91,7 +95,7 @@ int transaction :: buy(int walletIP,string coin,double amount)
             else if(coin == "SOL")
             {
                 // withdraw USD
-                double needed_USD = priceBoard.SOLANA->getprice() * amount;
+                double needed_USD = SOL_price * amount;
                 if(WalletManagement::WalletRefInstant[i].withdraw("USD",needed_USD) == 1)
                 {
                     // deposit
@@ -113,6 +117,7 @@ int transaction :: buy(int walletIP,string coin,double amount)
             }
         }
     }
+    return 5;
 }
 int transaction ::sell()
 {

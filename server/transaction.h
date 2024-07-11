@@ -10,10 +10,18 @@
 using namespace std;
 class transaction : public QObject
 {
+
     Q_OBJECT
+    double BTC_price;
+    double ETH_price;
+    double USDT_price;
+    double BNB_price;
+    double SOL_price;
+
 public:
     bool is_QUEUE_EMPTY = true;
-    transaction();    
+    transaction();
+    transaction(double _BTC_price,double _ETH_price,double _USDT_price,double _BNB_price,double _SOL_price);
     std :: vector<std :: vector<std :: string>> Queue; //saf entezar moamelat
     int buy(int walletIP,string coin,double amount);
     /*
@@ -21,6 +29,7 @@ public:
      * if coin name is wrong return 2
      * if could not withdraw USD return 3
      * if could not deposit coin return 4
+     * if could not find wallet ip return 5
     */
     int sell();
     int exchange();

@@ -21,8 +21,7 @@ std::vector<QString> splitIntoWords(const QString &input) {
 
     return result;
 }
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent): QMainWindow(parent)
 {
     Server = new QTcpServer();
     if(Server->listen(QHostAddress :: Any,6000)){
