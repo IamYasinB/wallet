@@ -207,7 +207,7 @@ int UsersManagement::do_registeration_by_username(const string& username,const s
         return 2;
     }else
     {
-        string query = "UPDATE Accounts SET name='" + name + "' phone='" + phone + "' address='" + address + "' WHERE userID='" + to_string(userID) + "';";
+        string query = "UPDATE Accounts SET name='" + name + "', phone='" + phone + "', address='" + address + "' WHERE userID=" + to_string(userID) + ";";
         QString qquery = query.c_str();
         DataBase* db = DataBase::getInstance();
         if(db->update(qquery))

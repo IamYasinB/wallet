@@ -104,6 +104,7 @@ void MainWindow ::  send_for_client(QString Message){
     }
     }
 QString MainWindow :: Client_Request(QString REQUEST){
+<<<<<<< HEAD
     if(REQUEST[1] == 'G' && REQUEST[2] == 'W'){  //-GW <username>
 
         //write in data base
@@ -175,7 +176,78 @@ QString MainWindow :: Client_Request(QString REQUEST){
             price = SOLANA->getprice();
         }
         all_trc.Analayzer(command[1],command[2],command[3],command[4],price,atof(command[5].c_str()));
+=======
+//     if(REQUEST[1] == 'G' && REQUEST[2] == 'W'){  //-GW <username>
+//         QString IP = QString :: fromStdString(allet::Generate_IP());
+//         //write in data base
+//         //TODO
+//         send_for_client(IP);
+//     }
+//     else if(REQUEST[1] == 'S' && REQUEST[2] == 'I'){ //-SU <username> <password>
+//         //TODO
+//         //sign up function be called and write that in data base
+//         //if signup was seccesfull return QSTRING "SU_S" and  if it was not return "SU_F" with the send_for_client() function
+//         std :: vector<QString> words = splitIntoWords(REQUEST);
+//         bool result = UsersManagement::signin(words[1].toStdString(),words[2].toStdString());
+//         int R;
+//         if(result == true){
+//             R=1;
+//         }
+//         else{
+//             R=0;
+//         }
+//         QString Result = QString :: number(R);
+//         qDebug() << Result;
+//         return "1"+Result;
+//     }
+//     else if(REQUEST[1] == 'S' && REQUEST[2] == 'U'){ //-SU <username> <password> <email>
+//         //TODO
+//         //sign in function be called and check user information that in data base
+//         //if signup was seccesfull return QSTRING "SI_S" and  if it was not return "SI_F" with the send_for_client() function
+//         std :: vector<QString> words = splitIntoWords(REQUEST);
+//         int result = UsersManagement::signup(words[3].toStdString(),words[2].toStdString(),words[1].toStdString());
+//         QString Result = QString :: number(result);
+//         qDebug() << Result;
+//         return Result;
+//     }
+//     else if(REQUEST[1] == 'C' && REQUEST[2] == 'I' ){ //-CI <username>
+//         //TODO
+//         //change username function should be called
+//         //the user name is already checked in the sign in function so it's valid and there should be no error for changing a user information
+//     }
+//     else if(REQUEST[1] == 'R' && REQUEST[2] == 'G'){ //-RG <username> <name> <phone number> <address>
+//         std :: vector<QString> words = splitIntoWords(REQUEST);
+//         int result = UsersManagement::do_registeration_by_username(words[1].toStdString(),words[2].toStdString(),words[3].toStdString(),words[4].toStdString());
+//         QString Result = QString :: number(result);
+//         return "2"+Result;
+//     }
+//     else if(REQUEST[1] == 'I' && REQUEST[2] == 'R'){ //-IR <username>
+//         //TODO
+//         //is_registered function should be called here
+//         //if user was register send 'T' and if it was not return 'F'
+//     }
+//     //transaction
+//     else if(REQUEST[1]=='X'){ //-X <username> <b/s/e> <balance> <1/2/3/4/5> <amount wanted>
+//         std :: vector<std :: string> command;/* = command_seperator(REQUEST.toStdString());*/
+//         double price;
+//         if(command[4]=="1"){
+//             price = BITCOIN->getprice();
+//         }
+//         if(command[4]=="2"){
+//             price = ETHEREUM->getprice();
+//         }
+//         if(command[4]=="3"){
+//             price = TETHER->getprice();
+//         }
+//         if(command[4]=="4"){
+//             price = BNB->getprice();
+//         }
+//         if(command[4]=="5"){
+//             price = SOLANA->getprice();
+//         }
+//         all_trc.Analayzer(command[1],command[2],command[3],command[4],price,atof(command[5].c_str()));
+>>>>>>> 17eed1e9f068742a77a9685a0923bdddbdba8409
         
-    }
-    return "nothing";
+//     }
+//     return "nothing";
  }

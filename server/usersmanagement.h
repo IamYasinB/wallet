@@ -15,11 +15,11 @@ class UsersManagement
 {
 private:
 
-    static vector<PersonNode> PersonsRefInstant;
     static mutex usrmutex;
     UsersManagement();
 public:
     // TODO : creat a loader to load all users from database
+    static vector<PersonNode> PersonsRefInstant;
     static void loader();
     static vector<PersonNode> getAllPersons()
     {
