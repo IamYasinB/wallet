@@ -20,7 +20,7 @@ private:
     UsersManagement();
 public:
     // TODO : creat a loader to load all users from database
-
+    static void loader();
     static vector<PersonNode> getAllPersons()
     {
         return PersonsRefInstant;

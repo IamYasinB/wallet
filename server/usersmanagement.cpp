@@ -2,6 +2,28 @@
 
 vector<PersonNode> UsersManagement::PersonsRefInstant;
 
+void UsersManagement::loader()
+{
+    vector<string> resulte;
+    QString query = "SELECT * FROM Accounts;";
+    DataBase* db = DataBase::getInstance();
+    resulte = db->select(query);
+
+    // creating Person nodes and push back
+    PersonNode temp;
+    for (int i = 0; i < resulte.size(); i += 8) {
+        temp.userId = stoi(resulte[i]);
+        temp.email = resulte[i + 1];
+        temp.password = resulte[i + 2];
+        temp.userName = resulte[i + 3];
+        temp.level = stoi(resulte[i + 4]);
+        temp.name = resulte[i + 5];
+        temp.phone = resulte[i + 6];
+        temp.address = resulte[i + 7];
+        PersonsRefInstant.push_back(temp);
+    }
+}
+
 UsersManagement::UsersManagement() {}
 int UsersManagement::signup(const string& _email,const string& _password,const string& _username,int inviterID)
 {
