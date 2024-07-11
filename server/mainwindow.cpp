@@ -105,10 +105,9 @@ void MainWindow ::  send_for_client(QString Message){
     }
 QString MainWindow :: Client_Request(QString REQUEST){
     if(REQUEST[1] == 'G' && REQUEST[2] == 'W'){  //-GW <username>
-        QString IP = QString :: fromStdString(wallet::Generate_IP());
+
         //write in data base
         //TODO
-        send_for_client(IP);
     }
     else if(REQUEST[1] == 'S' && REQUEST[2] == 'I'){ //-SU <username> <password>
         //TODO
@@ -154,6 +153,9 @@ QString MainWindow :: Client_Request(QString REQUEST){
         //if user was register send 'T' and if it was not return 'F'
     }
     //transaction
+    else if(REQUEST == "-balance"){
+        //get balace function
+    }
     else if(REQUEST[1]=='X'){ //-X <username> <b/s/e> <balance> <1/2/3/4/5> <amount wanted>
         std :: vector<std :: string> command;/* = command_seperator(REQUEST.toStdString());*/
         double price;
