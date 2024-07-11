@@ -18,6 +18,10 @@ public:
     /*
      * it returns IP address of new created wallet
     */
+    static vector<QString> get_user_wallet_IPs(int userID);
+    static vector<QString> get_user_wallet_IPs(const string& username);
+
+    static double get_wallet_USD(int walletIP);
 };
 
 #endif // WALLETMANAGEMENT_H

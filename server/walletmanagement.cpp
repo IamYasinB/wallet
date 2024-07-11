@@ -70,3 +70,42 @@ int WalletManagement::create_new_wallet(string username)
     }
     return create_new_wallet(ownerid);
 }
+
+vector<QString> WalletManagement::get_user_wallet_IPs(int userID)
+{
+    vector<QString> resulte;
+    QString temp;
+    for (int i = 0; i < WalletRefInstant.size(); ++i)
+    {
+        if(WalletRefInstant[i].ownerUserID == userID)
+        {
+            temp = to_string(WalletRefInstant[i].walletIP).c_str();
+            resulte.push_back(temp);
+        }
+    }
+    return resulte;
+}
+vector<QString> WalletManagement::get_user_wallet_IPs(const string& username)
+{
+    int userID = -1;
+    for (int i = 0; i < UsersManagement::PersonsRefInstant.size(); ++i)
+    {
+        if(username == UsersManagement::PersonsRefInstant[i].userName)
+        {
+            userID = UsersManagement::PersonsRefInstant[i].userId;
+            break;
+        }
+    }
+    return get_user_wallet_IPs(userID);
+}
+
+double WalletManagement::get_wallet_USD(int walletIP)
+{
+    for (int i = 0; i < WalletRefInstant.size(); ++i)
+    {
+        if(WalletRefInstant[i].walletIP == walletIP)
+        {
+            return WalletRefInstant[i].USD_balance;
+        }
+    }
+}
