@@ -2,6 +2,19 @@
 #include "ui_client_main.h"
 #include "client.h"
 #include <QDebug>
+#include <QMessageBox>
+std::vector<QString> splitIntoWords(const QString &input) {
+    // Split the input string by spaces
+    QStringList wordList = input.split(' ', Qt::SkipEmptyParts);
+
+    // Convert QStringList to std::vector<QString>
+    std::vector<QString> result;
+    for (const auto &word : wordList) {
+        result.push_back(word);
+    }
+
+    return result;
+}
 client_main::client_main(QString username,QTcpSocket* socket,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::client_main)
@@ -20,6 +33,7 @@ client_main::client_main(QString username,QTcpSocket* socket,QWidget *parent)
     timer->start(130000);
 
     request_price();
+    request_wallets(this->username);
 }
 void client_main :: request_price(){
     Write("p");
@@ -64,7 +78,26 @@ QString client_main :: read(QByteArray Message_from_serverr){
          }
     else if(Message_from_server[0] == 'W' && Message_from_server[1] == 'R'){
         Message_from_server = Message_from_server.remove(0,2);
-             ui->comboBox->addItem("Wllet_ID_"+Message_from_server);
+             Wallet_name.push_back(Message_from_server);
+             ui->comboBox->addItem("Wallet_ID_"+Message_from_server);
+
+    }
+    else if(Message_from_server[0] == 'W' && Message_from_server[1] == 'S'){
+               Message_from_server = Message_from_server.remove(0,2);
+        Wallet_name = splitIntoWords(Message_from_server);
+               for(size_t i = 0;i<Wallet_name.size();i++){
+            ui->comboBox->addItem("Wallet_ID_"+Wallet_name[i]);
+        }
+
+            }
+    else if(Message_from_server[0] == 'I'&& Message_from_server[1] == 'R'){
+                if(Message_from_server=="IR1"){
+            isregister = true;
+        }
+                else{
+                    isregister = false;
+                }
+
     }
     else if(NewPage2){
         NewPage2->Read(Message_from_serverr);
@@ -92,10 +125,22 @@ void client_main::on_pushButton_clicked()
     NewPage2 = new Register(username,socket,nullptr);
     NewPage2->show();
 }
-
-
+void client_main:: request_wallets(QString username){
+    Write("-SW "+username);
+}
+void client_main::request_isregister(){
+    Write("-IR "+username);
+}
 void client_main::on_pushButton_addwallet_clicked()
 {
+    // request_isregister();
+    // if(isregister == true){
+    //         QMessageBox::information(this, "Create wallet failed", "You are not registered yet");
+    //     return;
+    // }
+    if(Wallet_name.size()>=3){
+             QMessageBox::information(this, "Create wallet failed", "You can not have more then 3 wallets");
+    }
     Write("-AW "+username);
 }
 

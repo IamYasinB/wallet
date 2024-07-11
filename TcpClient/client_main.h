@@ -28,6 +28,8 @@ public:
     void request_price();
     void request_balance();
     std :: vector<QString> Wallet_name;
+    void request_wallets(QString username);
+    void request_isregister();
 private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
@@ -36,6 +38,7 @@ private slots:
 public slots:
     QString read(QByteArray Message_from_serverr);
 private:
+    bool isregister;
     QTimer* timer;
     QString username;
     QString balance;
