@@ -1,5 +1,6 @@
 #include "transaction.h"
 #include "coin.h"
+#include <QDebug>
 using namespace std;
 transaction :: transaction(double _BTC_price,double _ETH_price,double _USDT_price,double _BNB_price,double _SOL_price){
     connect(this,SIGNAL(vector_not_empty()),this,SLOT(Add_In_Queue()));
@@ -12,6 +13,7 @@ transaction :: transaction(double _BTC_price,double _ETH_price,double _USDT_pric
 transaction::transaction(){}
 int transaction :: buy(int walletIP,string coin,double amount)
 {
+    qDebug() << "buy function have been called";
     for (int i = 0; i < WalletManagement::WalletRefInstant.size(); ++i)
     {
         if(WalletManagement::WalletRefInstant[i].walletIP == walletIP)
