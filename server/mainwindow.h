@@ -28,7 +28,7 @@ private:
     Coin* SOLANA;
     // Coin* XRP;
     // Coin* TRON;
-    transaction all_trc;
+    transaction* all_trc;
 
 public:
     MainWindow(QWidget *parent = nullptr);

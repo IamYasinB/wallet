@@ -155,6 +155,13 @@ QString MainWindow :: Client_Request(QString REQUEST){
         //change username function should be called
         //the user name is already checked in the sign in function so it's valid and there should be no error for changing a user information
     }
+    else if(REQUEST[1] == 'G' && REQUEST[2] == 'B'){
+        std :: vector<QString> words = splitIntoWords(REQUEST);
+        double result = WalletManagement::get_wallet_USD(words[1].toInt());
+        QString Result = QString :: number(result);
+        qDebug() << Result;
+        return "GB" + Result;
+    }
     else if(REQUEST[1] == 'R' && REQUEST[2] == 'G'){ //-RG <username> <name> <phone number> <address>
         std :: vector<QString> words = splitIntoWords(REQUEST);
         int result = UsersManagement::do_registeration_by_username(words[1].toStdString(),words[2].toStdString(),words[3].toStdString(),words[4].toStdString());
@@ -174,29 +181,18 @@ QString MainWindow :: Client_Request(QString REQUEST){
         qDebug() << Result;
         return Result;
     }
-    //transaction
-    else if(REQUEST == "-balance"){
-        //get balace function
-    }
-    else if(REQUEST[1]=='X'){ //-X <username> <b/s/e> <balance> <1/2/3/4/5> <amount wanted>
-        std :: vector<std :: string> command;/* = command_seperator(REQUEST.toStdString());*/
-        double price;
-        if(command[4]=="1"){
-            price = BITCOIN->getprice();
+
+    else if(REQUEST[0]=='X'){
+        std :: vector<QString> words = splitIntoWords(REQUEST);
+        all_trc = new transaction(BITCOIN->getprice(),ETHEREUM->getprice(),TETHER->getprice(),BNB->getprice(),SOLANA->getprice());
+        if(words[1]=="b"){
+           int result =  all_trc->buy(words[2].toInt(),words[3].toStdString(),words[4].toDouble());
+            QString Result = QString :: number(result);
+           return "X"+Result;
         }
-        if(command[4]=="2"){
-            price = ETHEREUM->getprice();
+        else if(words[1]=="s"){
+
         }
-        if(command[4]=="3"){
-            price = TETHER->getprice();
-        }
-        if(command[4]=="4"){
-            price = BNB->getprice();
-        }
-        if(command[4]=="5"){
-            price = SOLANA->getprice();
-        }
-        all_trc.Analayzer(command[1],command[2],command[3],command[4],price,atof(command[5].c_str()));
     }
 
 

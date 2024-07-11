@@ -100,6 +100,18 @@ QString client_main :: read(QByteArray Message_from_serverr){
                 }
 
     }
+    else if(Message_from_server[0]=='G' &&Message_from_server[1]=='B'){
+                Message_from_server = Message_from_server.remove(0,2);
+        qDebug() << Message_from_server;
+        balance = Message_from_server;
+            }
+    else if(Message_from_server[0] == 'X'){
+        Message_from_server =  Message_from_server.remove(0,1);
+                if(Message_from_server=="1"){
+            QMessageBox::information(this, "Operation", "Operation seccesful");
+
+        }
+    }
     else if(NewPage2){
         NewPage2->Read(Message_from_serverr);
     }
@@ -130,7 +142,8 @@ void client_main:: request_wallets(QString username){
     Write("-SW "+username);
 }
 void client_main :: buy_sell_rq(QString operation,QString amount,QString coin){
-    request_balance();
+    QString walletIP = ui->comboBox->currentText().remove(0,10);
+    Write("X "+operation+" "+walletIP+" "+coin+" "+amount+" ");
 }
 void client_main::request_isregister(){
     Write("-IR "+username);
@@ -152,68 +165,68 @@ void client_main::on_pushButton_addwallet_clicked()
 
 void client_main::on_pushButton_3_clicked()
 {
-    buy_sell_rq("b",ui->lineEdit_1->text(),"1");
+    buy_sell_rq("b",ui->lineEdit_1->text(),"BTC");
 }
 
 
 void client_main::on_pushButton_4_clicked()
 {
-    buy_sell_rq("s",ui->lineEdit_1->text(),"1");
+    buy_sell_rq("s",ui->lineEdit_1->text(),"BTC");
 
 }
 
 
 void client_main::on_pushButton_5_clicked()
 {
-    buy_sell_rq("b",ui->lineEdit_2->text(),"2");
+    buy_sell_rq("b",ui->lineEdit_2->text(),"ETH");
 
 }
 
 
 void client_main::on_pushButton_6_clicked()
 {
-    buy_sell_rq("s",ui->lineEdit_2->text(),"2");
+    buy_sell_rq("s",ui->lineEdit_2->text(),"ETH");
 
 }
 
 
 void client_main::on_pushButton_7_clicked()
 {
-    buy_sell_rq("b",ui->lineEdit_3->text(),"3");
+    buy_sell_rq("b",ui->lineEdit_3->text(),"USDT");
 
 }
 
 
 void client_main::on_pushButton_8_clicked()
 {
-    buy_sell_rq("s",ui->lineEdit_3->text(),"3");
+    buy_sell_rq("s",ui->lineEdit_3->text(),"USDT");
 
 }
 
 
 void client_main::on_pushButton_9_clicked()
 {
-    buy_sell_rq("b",ui->lineEdit_4->text(),"4");
+    buy_sell_rq("b",ui->lineEdit_4->text(),"BNB");
 
 }
 
 
 void client_main::on_pushButton_10_clicked()
 {
-    buy_sell_rq("s",ui->lineEdit_4->text(),"4");
+    buy_sell_rq("s",ui->lineEdit_4->text(),"BNB");
 }
 
 
 void client_main::on_pushButton_11_clicked()
 {
-    buy_sell_rq("b",ui->lineEdit_5->text(),"5");
+    buy_sell_rq("b",ui->lineEdit_5->text(),"SOL");
 
 }
 
 
 void client_main::on_pushButton_12_clicked()
 {
-    buy_sell_rq("s",ui->lineEdit_5->text(),"5");
+    buy_sell_rq("s",ui->lineEdit_5->text(),"SOL");
 
 }
 
