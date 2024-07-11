@@ -112,6 +112,7 @@ QString MainWindow :: Client_Request(QString REQUEST){
         int result = WalletManagement::create_new_wallet(words[1].toStdString());
         QString Result = "WR" + QString :: number(result);
         qDebug() << Result;
+        return Result;
 
     }
     else if(REQUEST[1] == 'S' && REQUEST[2] == 'I'){ //-SU <username> <password>

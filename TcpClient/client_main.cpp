@@ -64,7 +64,7 @@ QString client_main :: read(QByteArray Message_from_serverr){
          }
     else if(Message_from_server[0] == 'W' && Message_from_server[1] == 'R'){
         Message_from_server = Message_from_server.remove(0,2);
-             ui->comboBox->addItem(Message_from_server);
+             ui->comboBox->addItem("Wllet_ID_"+Message_from_server);
     }
     else if(NewPage2){
         NewPage2->Read(Message_from_serverr);
