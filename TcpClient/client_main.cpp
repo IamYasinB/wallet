@@ -2,11 +2,12 @@
 #include "ui_client_main.h"
 #include "client.h"
 #include <QDebug>
-client_main::client_main(QTcpSocket* socket,QWidget *parent)
+client_main::client_main(QString username,QTcpSocket* socket,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::client_main)
 {
     this->socket = socket;
+    this->username = username;
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
@@ -16,7 +17,7 @@ client_main::client_main(QTcpSocket* socket,QWidget *parent)
 
     QTimer* timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &client_main::request_price);
-    timer->start(60000);
+    timer->start(130000);
 
     request_price();
 }
@@ -34,6 +35,7 @@ QString client_main :: read(QByteArray Message_from_serverr){
     if(Message_from_serverr.size()<=0){
         return "Empty";
     }
+
     QString Message_from_server = QString(Message_from_serverr);
     qDebug() << Message_from_server;
     if(Message_from_server[0]=='B'){
@@ -56,6 +58,9 @@ QString client_main :: read(QByteArray Message_from_serverr){
         Message_from_server =  Message_from_server.remove(0,1);
         ui->label_solana->setText("  "+Message_from_server);
          }
+    else if(NewPage2){
+        NewPage2->Read(Message_from_serverr);
+    }
 
     return Message_from_server;
 }
@@ -77,5 +82,7 @@ int client_main ::  Write(QString Text){
 
 void client_main::on_pushButton_clicked()
 {
+    NewPage2 = new Register(username,socket,nullptr);
+    NewPage2->show();
 }
 

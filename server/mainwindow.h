@@ -13,6 +13,7 @@
 #include "coin.h"
 #include "command_seprator.h"
 #include "transaction.h"
+#include "usersmanagement.h"
 
 class MainWindow : public QMainWindow
 {
@@ -34,7 +35,7 @@ public:
     ~MainWindow();
     QTcpServer* Server;
     QList<QTcpSocket*> Client_connection_list;
-    void Client_Request(QString REQUEST);
+    QString Client_Request(QString REQUEST);
 private slots:
     void send_for_client(QString Message);
     void newconnection();

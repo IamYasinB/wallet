@@ -3,7 +3,7 @@
 vector<PersonNode> UsersManagement::PersonsRefInstant;
 
 UsersManagement::UsersManagement() {}
-int UsersManagement::signup(const string& _email,const string& _password,const string& _username,int inviterID = -1)
+int UsersManagement::signup(const string& _email,const string& _password,const string& _username,int inviterID)
 {
     // check if email or user name exist
     for (int i = 0; i < PersonsRefInstant.size(); ++i)

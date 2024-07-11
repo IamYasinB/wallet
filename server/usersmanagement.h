@@ -26,7 +26,7 @@ public:
         return PersonsRefInstant;
     }
 
-    static int signup(const string& _email,const string& _password,const string& _username,int inviterID);
+    static int signup(const string& _email,const string& _password,const string& _username,int inviterID=-1);
     /*
      * if successful return 1
      * if email exist return 2
@@ -52,7 +52,7 @@ public:
     /*
      * return 1 if successful
      * return 2 if username dose not exist
-     * return 3 if can not execute update query
+     * return 3 if can username dose not exist
      * return 4 if name or phone or address are not valid
      */
 

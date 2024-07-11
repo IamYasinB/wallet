@@ -1,6 +1,6 @@
 #include "client.h"
 #include "ui_client.h"
-
+#include <QMessageBox>
 Client::Client(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Client)
@@ -11,6 +11,7 @@ Client::Client(QWidget *parent)
     setWindowModality(Qt::ApplicationModal);
     ui->lineEdit_username->setPlaceholderText("Username");
     ui->lineEdit_password->setPlaceholderText("Password");
+    ui->lineEdit_Email->setPlaceholderText("Email");
 
 }
 
@@ -19,7 +20,7 @@ Client::~Client()
     delete ui;
 }
 void Client :: New_page_open(){
-    New_page = new client_main(&socket);
+    New_page = new client_main(ui->lineEdit_username->text(),&socket);
     New_page->show();
     close();
 }
@@ -42,10 +43,41 @@ int Client :: Write(QString Text){
 }
 std :: string Client :: Read(){
     QByteArray Message_from_server = socket.readAll();
-    if(New_page){
+    QString Message = QString(Message_from_server);
+    if(Message == "1"){
+        QMessageBox::information(this, "Sign Up", "seccessful");
+    New_page_open();
+    }
+    else if(Message == "2"){
+        QMessageBox::information(this, "Sign Up", "this email exists");
+    }
+    else if(Message == "3"){
+        QMessageBox::information(this, "Sign Up", "this username exist");
+    }
+    else if(Message == "4"){
+        QMessageBox::information(this, "Sign Up", "email is not valid");
+    }
+    else if(Message == "5"){
+        QMessageBox::information(this, "Sign Up", "username is not valid");
+    }
+    else if(Message == "6"){
+        QMessageBox::information(this, "Sign Up", "password is not valid");
+    }
+    else if(Message == "7"){
+        QMessageBox::information(this, "Sign Up", "Connection lost , data base not found");
+    }
+    else if(Message == "11"){
+        QMessageBox::information(this, "Login", "Seccessfull");
+        New_page_open();
+    }
+    else if(Message == "10"){
+        QMessageBox::information(this, "Login", "Failed");
+    }
+
+    else if(New_page){
         New_page->read(Message_from_server);
               }
-    //qDebug() << Message_from_server;
+    qDebug() << Message_from_server;
     return (std::string)Message_from_server.toStdString();
 }
 
@@ -57,20 +89,21 @@ void Client::on_pushButton_exit_clicked()
 
 void Client::on_pushButton_login_clicked()
 {
-    //if login was seccesfull
-    New_page_open();
+    if(ui->lineEdit_username->text() != "" && ui->lineEdit_password->text()!=""){
+    Write("-SI " + ui->lineEdit_username->text() + " " + ui->lineEdit_password->text());
+    }
+
 }
-
-
 void Client::on_pushButton_signup_clicked()
-{
-    //if signup was seccesfull
-    New_page_open();
-
+{    if(ui->lineEdit_username->text() != "" && ui->lineEdit_password->text()!="" && ui->lineEdit_Email->text()!=""){
+    Write("-SU " + ui->lineEdit_username->text() + " " + ui->lineEdit_password->text() + " " + ui->lineEdit_Email->text());
+    }
 }
 
 
 void Client::on_pushButton_fpassword_clicked()
 {
+
+
 }
 

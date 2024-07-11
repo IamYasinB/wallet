@@ -9,7 +9,7 @@ Coin :: Coin(QString NAME,QString url_string,QObject* parent) : QObject(parent),
 
     QTimer* timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Coin::Update);
-    timer->start(60000);
+    timer->start(120000);
 
     Update();
 

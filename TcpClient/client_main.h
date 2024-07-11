@@ -9,6 +9,7 @@
 #include <QApplication>
 #include <QObject>
 #include <QTimer>
+#include "register.h"
 class Client;
 namespace Ui {
 class client_main;
@@ -19,7 +20,7 @@ class client_main : public QDialog
     Q_OBJECT
 
 public:
-    explicit client_main(QTcpSocket* soocket,QWidget *parent = nullptr);
+    explicit client_main(QString username,QTcpSocket* soocket,QWidget *parent = nullptr);
     ~client_main();
     int Write(QString Text);
     void request_price();
@@ -29,10 +30,12 @@ private slots:
 public slots:
     QString read(QByteArray Message_from_serverr);
 private:
+    QString username;
+    QString password;
     Ui::client_main *ui;
     QTcpSocket* socket;
     Client* NewPage;
-
+    Register* NewPage2;
 };
 
 #endif // CLIENT_MAIN_H
