@@ -39,7 +39,8 @@ int WalletManagement::create_new_wallet(int ownerUserID)
     query = "SELECT walletIP FROM wallet_balance WHERE owner=" + to_string(ownerUserID) + ";";
     qquery = query.c_str();
     vector<string> selectResult = db->select(qquery);
-    newWalletIP = stoi(selectResult.back());
+    qDebug() << selectResult.back();
+    newWalletIP = stoi(selectResult[selectResult.size()-1]);
 
     // push back into WalletRefInstant
     Wallet temp;

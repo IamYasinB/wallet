@@ -7,9 +7,11 @@
 #include <QString>
 #include <QDebug>
 #include <QApplication>
+#include <vector>
 #include <QObject>
 #include <QTimer>
 #include "register.h"
+
 class Client;
 namespace Ui {
 class client_main;
@@ -25,9 +27,12 @@ public:
     int Write(QString Text);
     void request_price();
     void request_balance();
+    std :: vector<QString> Wallet_name;
 private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
+    void on_pushButton_addwallet_clicked();
+
 public slots:
     QString read(QByteArray Message_from_serverr);
 private:

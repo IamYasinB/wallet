@@ -62,6 +62,10 @@ QString client_main :: read(QByteArray Message_from_serverr){
         Message_from_server =  Message_from_server.remove(0,1);
         ui->label_solana->setText("  "+Message_from_server);
          }
+    else if(Message_from_server[0] == 'W' && Message_from_server[1] == 'R'){
+        Message_from_server = Message_from_server.remove(0,2);
+             ui->comboBox->addItem(Message_from_server);
+    }
     else if(NewPage2){
         NewPage2->Read(Message_from_serverr);
     }
@@ -73,7 +77,6 @@ void client_main::on_pushButton_2_clicked()
     NewPage = new Client(socket);
     NewPage->show();
     close();
-
 }
 int client_main ::  Write(QString Text){
     if(socket->write(Text.toUtf8())==-1){
@@ -88,5 +91,11 @@ void client_main::on_pushButton_clicked()
 {
     NewPage2 = new Register(username,socket,nullptr);
     NewPage2->show();
+}
+
+
+void client_main::on_pushButton_addwallet_clicked()
+{
+    Write("-AW "+username);
 }
 

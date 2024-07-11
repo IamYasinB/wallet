@@ -684,6 +684,44 @@ color:rgb(0, 0, 0);</string>
     <enum>Qt::Vertical</enum>
    </property>
   </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>30</y>
+     <width>121</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:10px;
+font: 600 10pt &quot;Segoe UI Variable Small Semibol&quot;;
+color:rgb(0, 0, 0);</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_addwallet">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>0</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Add Wallet</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
