@@ -5,6 +5,7 @@ Client::Client(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Client)
 {
+    conncet_to_server();
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);

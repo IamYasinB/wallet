@@ -30,6 +30,9 @@ client_main::~client_main()
 {
     delete ui;
 }
+void client_main :: request_balance(){
+    Write("-balance");
+}
 
 QString client_main :: read(QByteArray Message_from_serverr){
     if(Message_from_serverr.size()<=0){
