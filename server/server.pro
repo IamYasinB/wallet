@@ -19,7 +19,8 @@ SOURCES += \
     transaction.cpp \
     usersmanagement.cpp \
     validators.cpp \
-    wallet.cpp
+    wallet.cpp \
+    walletmanagement.cpp
 
 HEADERS += \
     coin.h \
@@ -29,7 +30,8 @@ HEADERS += \
     transaction.h \
     usersmanagement.h \
     validators.h \
-    wallet.h
+    wallet.h \
+    walletmanagement.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
