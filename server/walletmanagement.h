@@ -22,6 +22,8 @@ public:
     static vector<QString> get_user_wallet_IPs(const string& username);
 
     static double get_wallet_USD(int walletIP);
+    static int usernameTOuserid(string username);
+
 };
 
 #endif // WALLETMANAGEMENT_H
