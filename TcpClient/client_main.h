@@ -30,15 +30,36 @@ public:
     std :: vector<QString> Wallet_name;
     void request_wallets(QString username);
     void request_isregister();
+    void buy_sell_rq(QString operation,QString amount,QString coin);
+
 private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
     void on_pushButton_addwallet_clicked();
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_12_clicked();
 
 public slots:
     QString read(QByteArray Message_from_serverr);
 private:
-    bool isregister;
+        bool isregister;
     QTimer* timer;
     QString username;
     QString balance;

@@ -46,7 +46,8 @@ client_main::~client_main()
     delete ui;
 }
 void client_main :: request_balance(){
-    Write("-balance");
+    Write("-GB "+ui->comboBox->currentText().remove(0,10));
+    qDebug() << "-GB "+ui->comboBox->currentText().remove(0,10);
 }
 
 QString client_main :: read(QByteArray Message_from_serverr){
@@ -128,6 +129,9 @@ void client_main::on_pushButton_clicked()
 void client_main:: request_wallets(QString username){
     Write("-SW "+username);
 }
+void client_main :: buy_sell_rq(QString operation,QString amount,QString coin){
+    request_balance();
+}
 void client_main::request_isregister(){
     Write("-IR "+username);
 }
@@ -140,7 +144,76 @@ void client_main::on_pushButton_addwallet_clicked()
     // }
     if(Wallet_name.size()>=3){
              QMessageBox::information(this, "Create wallet failed", "You can not have more then 3 wallets");
+        return;
     }
     Write("-AW "+username);
+}
+
+
+void client_main::on_pushButton_3_clicked()
+{
+    buy_sell_rq("b",ui->lineEdit_1->text(),"1");
+}
+
+
+void client_main::on_pushButton_4_clicked()
+{
+    buy_sell_rq("s",ui->lineEdit_1->text(),"1");
+
+}
+
+
+void client_main::on_pushButton_5_clicked()
+{
+    buy_sell_rq("b",ui->lineEdit_2->text(),"2");
+
+}
+
+
+void client_main::on_pushButton_6_clicked()
+{
+    buy_sell_rq("s",ui->lineEdit_2->text(),"2");
+
+}
+
+
+void client_main::on_pushButton_7_clicked()
+{
+    buy_sell_rq("b",ui->lineEdit_3->text(),"3");
+
+}
+
+
+void client_main::on_pushButton_8_clicked()
+{
+    buy_sell_rq("s",ui->lineEdit_3->text(),"3");
+
+}
+
+
+void client_main::on_pushButton_9_clicked()
+{
+    buy_sell_rq("b",ui->lineEdit_4->text(),"4");
+
+}
+
+
+void client_main::on_pushButton_10_clicked()
+{
+    buy_sell_rq("s",ui->lineEdit_4->text(),"4");
+}
+
+
+void client_main::on_pushButton_11_clicked()
+{
+    buy_sell_rq("b",ui->lineEdit_5->text(),"5");
+
+}
+
+
+void client_main::on_pushButton_12_clicked()
+{
+    buy_sell_rq("s",ui->lineEdit_5->text(),"5");
+
 }
 
