@@ -1,9 +1,10 @@
 #include "client.h"
 #include "ui_client.h"
 #include <QMessageBox>
-Client::Client(QWidget *parent)
+Client::Client(QTcpSocket* socket,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Client)
+    , socket(socket ? socket : new QTcpSocket(this))
 {
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);

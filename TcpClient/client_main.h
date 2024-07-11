@@ -30,6 +30,7 @@ private slots:
 public slots:
     QString read(QByteArray Message_from_serverr);
 private:
+    QTimer* timer;
     QString username;
     QString password;
     Ui::client_main *ui;

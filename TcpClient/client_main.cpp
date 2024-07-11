@@ -15,7 +15,7 @@ client_main::client_main(QString username,QTcpSocket* socket,QWidget *parent)
 //    connect(socket,&QTcpSocket::readyRead,this,&client_main::read);
 
 
-    QTimer* timer = new QTimer(this);
+    timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &client_main::request_price);
     timer->start(130000);
 
@@ -28,6 +28,7 @@ void client_main :: request_price(){
 
 client_main::~client_main()
 {
+    timer->stop();
     delete ui;
 }
 
@@ -66,11 +67,11 @@ QString client_main :: read(QByteArray Message_from_serverr){
 }
 void client_main::on_pushButton_2_clicked()
 {
-    NewPage = new Client;
+    NewPage = new Client(socket);
     NewPage->show();
     close();
-}
 
+}
 int client_main ::  Write(QString Text){
     if(socket->write(Text.toUtf8())==-1){
         return -1;

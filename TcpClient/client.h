@@ -22,7 +22,7 @@ private:
     QTcpSocket socket;
     client_main* New_page;
 public:
-    Client(QWidget *parent = nullptr);
+    Client(QTcpSocket* socket = nullptr, QWidget *parent = nullptr);
     ~Client();
     int conncet_to_server();
     int Write(QString Text);
