@@ -135,6 +135,13 @@ QString client_main :: read(QByteArray Message_from_serverr){
                      }
                 }
     }
+else if(Message_from_server[0]=='R'&&Message_from_server[1]=='E'){
+                Message_from_server =  Message_from_server.remove(0,2);
+                std :: vector<QString> full_balance = splitIntoWords(Message_from_server);
+                QMessageBox::information(this, "Your wallet", "Usd : " + full_balance[0] + "\n" + " BTC : " + full_balance[1] + "\n" + " ETH : "+full_balance[2] + "\n"
+                                         +" USDT : " + full_balance[3] +"\n" + " BNB : " + full_balance[4] + "\n" + " SOL : " + full_balance[5]);
+
+            }
     else if(NewPage2){
         NewPage2->Read(Message_from_serverr);
     }

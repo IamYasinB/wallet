@@ -196,7 +196,12 @@ QString MainWindow :: Client_Request(QString REQUEST){
     else if(REQUEST[1]=='S'&&REQUEST[2]=='H'){
         std :: vector<QString> words = splitIntoWords(REQUEST);
         //yasin waiting for you
-        //vector<QString> each_balance
+        vector<QString> each_balance = WalletManagement::get_all_coin(words[1].toInt());
+        QString Result;
+        for(size_t i = 0;i<each_balance.size();i++){
+            Result+=each_balance[i]+" ";
+        }
+        return "RE"+Result;
     }
     else if(REQUEST[0]=='X'){
         std :: vector<QString> words = splitIntoWords(REQUEST);
