@@ -56,9 +56,9 @@ public:
      * return 4 if name or phone or address are not valid
      */
 
+    static bool forget_password(string email,string username);
 
     // TODO : complet these two functions below
-    // static int change_password(string emailOrUsername,string password);
     // static int reset_password(string userame,string email,string newPasswprd);
 };
 

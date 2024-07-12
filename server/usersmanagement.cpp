@@ -219,3 +219,16 @@ int UsersManagement::do_registeration_by_username(const string& username,const s
         }
     }
 }
+
+
+bool UsersManagement::forget_password(string email,string username)
+{
+    for (int i = 0; i < PersonsRefInstant.size(); ++i)
+    {
+        if(PersonsRefInstant[i].email == email && PersonsRefInstant[i].userName == username)
+        {
+            return true;
+        }
+    }
+    return false;
+}
