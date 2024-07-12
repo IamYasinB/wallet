@@ -56,6 +56,8 @@ private slots:
 
     void on_pushButton_12_clicked();
 
+    void on_pushButton_showwallet_clicked();
+
 public slots:
     QString read(QByteArray Message_from_serverr);
 private:

@@ -181,7 +181,23 @@ QString MainWindow :: Client_Request(QString REQUEST){
         qDebug() << Result;
         return Result;
     }
-
+    else if(REQUEST[1]=='F'&&REQUEST[2]=='P'){
+        std :: vector<QString> words = splitIntoWords(REQUEST);
+       bool result =  UsersManagement::forget_password(words[2].toStdString(),words[1].toStdString());
+        QString Result="1";
+        if(result){
+            Result+="1";
+        }
+        else{
+            Result+="0";
+        }
+        return Result;
+    }
+    else if(REQUEST[1]=='S'&&REQUEST[2]=='H'){
+        std :: vector<QString> words = splitIntoWords(REQUEST);
+        //yasin waiting for you
+        //vector<QString> each_balance
+    }
     else if(REQUEST[0]=='X'){
         std :: vector<QString> words = splitIntoWords(REQUEST);
         all_trc = new transaction(BITCOIN->getprice(),ETHEREUM->getprice(),TETHER->getprice(),BNB->getprice(),SOLANA->getprice());

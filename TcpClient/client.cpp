@@ -106,7 +106,9 @@ void Client::on_pushButton_signup_clicked()
 
 void Client::on_pushButton_fpassword_clicked()
 {
-
+    if(ui->lineEdit_username->text()!=""&&ui->lineEdit_Email->text()!=""){
+        Write("-FP "+ui->lineEdit_username->text()+" "+ui->lineEdit_Email->text());
+    }
 
 }
 

@@ -722,6 +722,29 @@ QPushButton:pressed{
     <string>Add Wallet</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton_showwallet">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>30</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-radius:10px;
+background-color: rgb(43, 107, 255);
+font: 600 9pt &quot;Segoe UI Variable Display Semib&quot; ;;
+color : white;}
+QPushButton:pressed{
+	background-color: rgb(114, 156, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Show Wallet</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
