@@ -191,6 +191,9 @@ QString MainWindow :: Client_Request(QString REQUEST){
            return "X"+Result;
         }
         else if(words[1]=="s"){
+            int result =  all_trc->sell(words[2].toInt(),words[3].toStdString(),words[4].toDouble());
+            QString Result = QString :: number(result);
+            return "X"+Result;
 
         }
     }

@@ -108,9 +108,32 @@ QString client_main :: read(QByteArray Message_from_serverr){
     else if(Message_from_server[0] == 'X'){
         Message_from_server =  Message_from_server.remove(0,1);
                 if(Message_from_server=="1"){
-            QMessageBox::information(this, "Operation", "Operation seccesful");
+            QMessageBox::information(this, "Operation", "Operation seccessful");
 
         }
+                else{
+                    /*
+     * if successful return 1
+     * if coin name is wrong return 2
+     * if could not deposit coin return 3
+     * if could not withdraw USD return 4
+     * if could not find wallet ip return 5
+    */
+                     if(Message_from_server=="2"){
+                        QMessageBox::information(this, "Operation", "Operation Faild : coin not valid");
+                    }
+                     else if(Message_from_server=="3"){
+                         QMessageBox::information(this, "Operation", "Operation Faild : deposit failed");
+                     }
+                    else if(Message_from_server=="4"){
+                        QMessageBox::information(this, "Operation", "Operation Faild : withdraw failed");
+
+                    }
+                     else if(Message_from_server=="5"){
+                         QMessageBox::information(this, "Operation", "Operation Faild : Wallet not found");
+
+                     }
+                }
     }
     else if(NewPage2){
         NewPage2->Read(Message_from_serverr);
@@ -166,12 +189,14 @@ void client_main::on_pushButton_addwallet_clicked()
 void client_main::on_pushButton_3_clicked()
 {
     buy_sell_rq("b",ui->lineEdit_1->text(),"BTC");
+    ui->lineEdit_1->setText("");
 }
 
 
 void client_main::on_pushButton_4_clicked()
 {
     buy_sell_rq("s",ui->lineEdit_1->text(),"BTC");
+    ui->lineEdit_1->setText("");
 
 }
 
@@ -179,6 +204,7 @@ void client_main::on_pushButton_4_clicked()
 void client_main::on_pushButton_5_clicked()
 {
     buy_sell_rq("b",ui->lineEdit_2->text(),"ETH");
+    ui->lineEdit_2->setText("");
 
 }
 
@@ -186,6 +212,7 @@ void client_main::on_pushButton_5_clicked()
 void client_main::on_pushButton_6_clicked()
 {
     buy_sell_rq("s",ui->lineEdit_2->text(),"ETH");
+    ui->lineEdit_2->setText("");
 
 }
 
@@ -193,6 +220,7 @@ void client_main::on_pushButton_6_clicked()
 void client_main::on_pushButton_7_clicked()
 {
     buy_sell_rq("b",ui->lineEdit_3->text(),"USDT");
+    ui->lineEdit_3->setText("");
 
 }
 
@@ -200,6 +228,7 @@ void client_main::on_pushButton_7_clicked()
 void client_main::on_pushButton_8_clicked()
 {
     buy_sell_rq("s",ui->lineEdit_3->text(),"USDT");
+    ui->lineEdit_3->setText("");
 
 }
 
@@ -207,26 +236,27 @@ void client_main::on_pushButton_8_clicked()
 void client_main::on_pushButton_9_clicked()
 {
     buy_sell_rq("b",ui->lineEdit_4->text(),"BNB");
-
+    ui->lineEdit_4->setText("");
 }
 
 
 void client_main::on_pushButton_10_clicked()
 {
     buy_sell_rq("s",ui->lineEdit_4->text(),"BNB");
+    ui->lineEdit_4->setText("");
 }
 
 
 void client_main::on_pushButton_11_clicked()
 {
     buy_sell_rq("b",ui->lineEdit_5->text(),"SOL");
-
+    ui->lineEdit_5->setText("");
 }
 
 
 void client_main::on_pushButton_12_clicked()
 {
     buy_sell_rq("s",ui->lineEdit_5->text(),"SOL");
-
+    ui->lineEdit_5->setText("");
 }
 
