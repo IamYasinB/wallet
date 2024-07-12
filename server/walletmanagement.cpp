@@ -123,3 +123,33 @@ int WalletManagement::usernameTOuserid(string username)
     }
     return userID;
 }
+
+vector<QString> WalletManagement::get_all_coin(int walletIP)
+{
+    QString temp;
+    vector<QString> result;
+    for (int i = 0; i < WalletRefInstant.size(); ++i)
+    {
+        if(WalletRefInstant[i].walletIP == walletIP)
+        {
+            temp = to_string(WalletRefInstant[i].USD_balance).c_str();
+            result.push_back(temp);
+
+            temp = to_string(WalletRefInstant[i].BTC_balance).c_str();
+            result.push_back(temp);
+
+            temp = to_string(WalletRefInstant[i].ETH_balance).c_str();
+            result.push_back(temp);
+
+            temp = to_string(WalletRefInstant[i].USDT_balance).c_str();
+            result.push_back(temp);
+
+            temp = to_string(WalletRefInstant[i].BNB_balance).c_str();
+            result.push_back(temp);
+
+            temp = to_string(WalletRefInstant[i].SOL_balance).c_str();
+            result.push_back(temp);
+        }
+    }
+    return result;
+}

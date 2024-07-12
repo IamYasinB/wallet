@@ -23,7 +23,8 @@ public:
 
     static double get_wallet_USD(int walletIP);
     static int usernameTOuserid(string username);
-
+    static vector<QString> get_all_coin(int walletIP);
+    // return order USD BTC ETH USDT BNB SOL
 };
 
 #endif // WALLETMANAGEMENT_H
