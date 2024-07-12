@@ -260,3 +260,9 @@ void client_main::on_pushButton_12_clicked()
     ui->lineEdit_5->setText("");
 }
 
+
+void client_main::on_pushButton_showwallet_clicked()
+{
+    Write("-SH "+ui->comboBox->currentText().remove(0,10));
+}
+
