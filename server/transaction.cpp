@@ -121,8 +121,114 @@ int transaction :: buy(int walletIP,string coin,double amount)
     }
     return 5;
 }
-int transaction ::sell()
+int transaction ::sell(int walletIP,string coin,double amount)
 {
+    for (int i = 0; i < WalletManagement::WalletRefInstant.size(); ++i)
+    {
+        if(WalletManagement::WalletRefInstant[i].walletIP == walletIP)
+        {
+            if(coin == "BTC")
+            {
+                // withdraw BTC
+                if(WalletManagement::WalletRefInstant[i].withdraw("BTC",amount) == 1)
+                {
+                    // deposit USD
+                    double needed_USD = BTC_price * amount;
+                    if(WalletManagement::WalletRefInstant[i].deposit("USD",needed_USD) == 1)
+                    {
+                        return 1;
+                    }else
+                    {
+                        return 4;
+                    }
+                }else
+                {
+                    return 3;
+                }
+            }
+            else if(coin == "ETH")
+            {
+                // withdraw ETH
+                if(WalletManagement::WalletRefInstant[i].withdraw("ETH",amount))
+                {
+                    // deposit
+                    double needed_USD = ETH_price * amount;
+                    if(WalletManagement::WalletRefInstant[i].deposit("USD",needed_USD) == 1)
+                    {
+                        return 1;
+                    }else
+                    {
+                        return 4;
+                    }
+                }else
+                {
+                    return 3;
+                }
+            }
+            else if(coin == "USDT")
+            {
+                // withdraw USDT
+                if(WalletManagement::WalletRefInstant[i].withdraw("USDT",amount) == 1)
+                {
+                    // deposit
+                    double needed_USD = USDT_price * amount;
+                    if(WalletManagement::WalletRefInstant[i].deposit("USD",needed_USD) == 1)
+                    {
+                        return 1;
+                    }else
+                    {
+                        return 4;
+                    }
+                }else
+                {
+                    return 3;
+                }
+            }
+            else if(coin == "BNB")
+            {
+                // withdraw BNB
+                if(WalletManagement::WalletRefInstant[i].withdraw("BNB",amount) == 1)
+                {
+                    // deposit
+                    double needed_USD = BNB_price * amount;
+                    if(WalletManagement::WalletRefInstant[i].deposit("USD",needed_USD) == 1)
+                    {
+                        return 1;
+                    }else
+                    {
+                        return 4;
+                    }
+                }else
+                {
+                    return 3;
+                }
+            }
+            else if(coin == "SOL")
+            {
+                // withdraw SOL
+                if(WalletManagement::WalletRefInstant[i].withdraw("SOL",amount) == 1)
+                {
+                    // deposit
+                    double needed_USD = SOL_price * amount;
+                    if(WalletManagement::WalletRefInstant[i].deposit("USD",needed_USD) == 1)
+                    {
+                        return 1;
+                    }else
+                    {
+                        return 4;
+                    }
+                }else
+                {
+                    return 3;
+                }
+            }
+            else
+            {
+                return 2;
+            }
+        }
+    }
+    return 5;
 }
 int transaction :: exchange()
 {
